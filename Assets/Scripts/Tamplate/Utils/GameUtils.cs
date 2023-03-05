@@ -26,6 +26,7 @@ namespace Game
             public static string UPDATE_TOTAL_MONEY_UI = "UPDATE_TOTAL_MONEY_UI";
 
             public static string GENERATE_GRID = "GENERATE_GRID";
+            public static string POP_MIN_VALUE_WARNING = "POP_MIN_VALUE_WARNING";
             #endregion
         }
         public static class MouseUtils

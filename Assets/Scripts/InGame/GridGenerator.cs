@@ -18,7 +18,7 @@ namespace Game
         GameObject gridCellPrefab;
         GameObject gridParent;
 
-        [SerializeField] Grid grid;
+        Grid grid;
 
         #region UNITY_METHODS
         private void OnEnable()
@@ -54,6 +54,7 @@ namespace Game
         }
         private void GenerateCell()
         {
+            Destroy(gridParent);
             GameObject[,] createdCells = new GameObject[gridSize, gridSize];
             GameObject tempParent = new GameObject("Cell Parent");
             gridParent = Instantiate(tempParent, gridArea);
@@ -73,21 +74,13 @@ namespace Game
             }
             grid.cells = createdCells;
         }
-        private void GenerateGridOnScrene(object[] obj)
+        public void GenerateGridOnScrene(object[] obj)
         {
+            if (gridArea == null)
+                gridArea = transform;
             grid= (Grid)obj[0];
             spacing = grid.properties.spacing;
             gridSize= grid.properties.size;
-            gridCellPrefab = grid.properties.cellPrefab;
-            CalculateBorders();
-            CalculateCellSize();
-            GenerateCell();
-        }
-        [ButtonMethod]
-        public void Test()
-        {
-            spacing = grid.properties.spacing;
-            gridSize = grid.properties.size;
             gridCellPrefab = grid.properties.cellPrefab;
             CalculateBorders();
             CalculateCellSize();
