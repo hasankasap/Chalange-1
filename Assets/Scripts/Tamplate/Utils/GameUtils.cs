@@ -19,12 +19,13 @@ namespace Game
             #endregion
 
             #region IN_GAME_EVENTS
-
             public static string CHANGE_MONEY = "CHANGE_MONEY";
             public static string ADD_MONEY = "ADD_MONEY";
             public static string SHOW_FINISH_MONEY = "SHOW_FINISH_MONEY";
             public static string UPDATE_FINISH_MONEY_UI = "UPDATE_FINISH_MONEY_UI";
             public static string UPDATE_TOTAL_MONEY_UI = "UPDATE_TOTAL_MONEY_UI";
+
+            public static string GENERATE_GRID = "GENERATE_GRID";
             #endregion
         }
         public static class MouseUtils
