@@ -27,11 +27,12 @@ namespace Game
 
             public static string GENERATE_GRID = "GENERATE_GRID";
             public static string POP_MIN_VALUE_WARNING = "POP_MIN_VALUE_WARNING";
+            public static string PLACE_INTO_CELL = "PLACE_INTO_CELL";
             #endregion
         }
         public static class MouseUtils
         {
-            public static bool mouseIsOnUI()
+            public static bool MouseIsOnUI()
             {
                 PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
                 eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
@@ -42,7 +43,7 @@ namespace Game
         }
         public static class Remap
         {
-            public static float calculate(float from, float fromMin, float fromMax, float toMin, float toMax)
+            public static float Calculate(float from, float fromMin, float fromMax, float toMin, float toMax)
             {
                 return toMin + (from - fromMin) * (toMax - toMin) / (fromMax - fromMin);
             }

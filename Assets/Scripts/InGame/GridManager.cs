@@ -2,6 +2,7 @@ using Game.Utils;
 using MyBox;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Game
@@ -10,6 +11,7 @@ namespace Game
     {
         [SerializeField] Grid grid;
         [SerializeField, Min(1)] int gridMinSize = 1;
+        public int score;
         GridGenerator generator;
 
         #region UNITY_METHODS
@@ -19,11 +21,11 @@ namespace Game
         }
         void OnEnable()
         {
-            
+            EventManager.StartListening(Events.PLACE_INTO_CELL, PlaceIntoCell);
         }
         void OnDisable()
         {
-            
+            EventManager.StopListening(Events.PLACE_INTO_CELL, PlaceIntoCell);
         }
         #endregion
 
@@ -48,7 +50,26 @@ namespace Game
                 return;
             EventManager.TriggerEvent(Events.GENERATE_GRID, true, new object[] { grid });
         }
+        private void PlaceIntoCell(object[] obj)
+        {
+            if (grid == null)
+                return;
+            GameObject target = (GameObject)obj[0];
+            int[] index = grid.FindSlotIndex(target);
 
+            if (index == null || grid.placedObjects.Any(po => po.index.SequenceEqual(index)))
+                return;
+
+            grid.CellPlacement(index, target);
+
+            bool scoreCondition = grid.CheckCellsForScore();
+            if (scoreCondition)
+            {
+                score++;
+                grid.ClearPlacedObjects();
+            }
+        }
+       
         [ButtonMethod]
         public void GenerateOnEditorGrid()
         {

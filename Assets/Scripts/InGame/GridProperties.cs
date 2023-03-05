@@ -10,5 +10,6 @@ namespace Game
         public int size;
         public float spacing;
         public GameObject cellPrefab;
+        public GameObject placementObject;
     }
 }

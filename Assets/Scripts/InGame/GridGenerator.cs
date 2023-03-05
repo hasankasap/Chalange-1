@@ -57,7 +57,9 @@ namespace Game
             Destroy(gridParent);
             GameObject[,] createdCells = new GameObject[gridSize, gridSize];
             GameObject tempParent = new GameObject("Cell Parent");
-            gridParent = Instantiate(tempParent, gridArea);
+            //Instantiate(tempParent, gridArea);
+            gridParent = tempParent;
+            tempParent.transform.parent = gridArea.transform;
             for (int i = 0; i < gridSize; i++)
             {
                 for (int j = 0; j < gridSize; j++)
@@ -66,12 +68,13 @@ namespace Game
                     float distance = (cellSize + spacing);
                     gridPos.y = topBorder.y - (distance * i);
                     gridPos.x = (spacing + leftBorderPos.x) + (distance * j);
-                    GameObject temp = Instantiate(gridCellPrefab, gridParent.transform);
+                    GameObject temp = Instantiate(gridCellPrefab, tempParent.transform);
                     temp.transform.position = gridPos;
                     temp.transform.localScale = Vector3.one * cellSize;
                     createdCells[i,j] = temp;
                 }
             }
+            grid.ClearPlacedObjects();
             grid.cells = createdCells;
         }
         public void GenerateGridOnScrene(object[] obj)
