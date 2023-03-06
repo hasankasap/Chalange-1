@@ -42,7 +42,7 @@ namespace Game
         }
         private void UpdateScoreUI(object[] obj)
         {
-            scoreText.text= (string)obj[0];
+            scoreText.text= "Score: " + (string)obj[0];
         }
         #endregion
     }
