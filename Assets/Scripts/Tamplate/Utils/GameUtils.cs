@@ -28,6 +28,7 @@ namespace Game
             public static string GENERATE_GRID = "GENERATE_GRID";
             public static string POP_MIN_VALUE_WARNING = "POP_MIN_VALUE_WARNING";
             public static string PLACE_INTO_CELL = "PLACE_INTO_CELL";
+            public static string UPDATE_SCORE_UI = "UPDATE_SCORE_UI";
             #endregion
         }
         public static class MouseUtils

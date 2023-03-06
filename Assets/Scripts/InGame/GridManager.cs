@@ -41,6 +41,7 @@ namespace Game
         public void Initialize()
         {
             generator = FindObjectOfType<GridGenerator>();
+            ResetScore();
             if (grid == null)
                 grid = FindObjectOfType<Grid>();
         }
@@ -49,6 +50,12 @@ namespace Game
             if (grid == null)
                 return;
             EventManager.TriggerEvent(Events.GENERATE_GRID, true, new object[] { grid });
+            ResetScore();
+        }
+        private void ResetScore()
+        {
+            score = 0;
+            EventManager.TriggerEvent(Events.UPDATE_SCORE_UI, true, new object[] { score.ToString() });
         }
         private void PlaceIntoCell(object[] obj)
         {
@@ -66,17 +73,9 @@ namespace Game
             if (scoreCondition)
             {
                 score++;
+                EventManager.TriggerEvent(Events.UPDATE_SCORE_UI, true, new object[] { score.ToString() });
                 grid.ClearPlacedObjects();
             }
-        }
-       
-        [ButtonMethod]
-        public void GenerateOnEditorGrid()
-        {
-            generator = FindObjectOfType<GridGenerator>();
-            if (generator == null || grid == null)
-                return;
-            generator.GenerateGridOnScrene(new object[] { grid });
         }
         #endregion
     }

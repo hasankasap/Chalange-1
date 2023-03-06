@@ -1134,6 +1134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 1206470642}
   gridMinSize: 3
+  score: 0
 --- !u!1 &1048765299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   properties:
-    size: 5
+    size: 3
     spacing: 0.1
     cellPrefab: {fileID: 7584356143617233226, guid: 7f2bbf34f53b8c841908904a7ef6e738, type: 3}
     placementObject: {fileID: 7584356143617233226, guid: f29e4f9beac0c8f48ab6a86b7b3b0916, type: 3}
@@ -1377,6 +1378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minValueWarning: {fileID: 755997796}
+  scoreText: {fileID: 1694669866}
 --- !u!1 &1694669864
 GameObject:
   m_ObjectHideFlags: 0
